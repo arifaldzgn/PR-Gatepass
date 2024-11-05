@@ -40,7 +40,7 @@
                     <td>
                         <center>
                             @if ($dT->status === 'Pending' or $dT->status === 'Revised')
-                            <button onclick="console.log({{$dT->id}})" class="updateBtn btn btn-primary" data-request-id="{{ $dT->id }}"><i class="bi bi-pencil-square"></i></button>
+                            <button type="button" onclick="console.log({{$dT->id}})" class="updateBtn btn btn-primary" data-request-id="{{ $dT->id }}"><i class="bi bi-pencil-square"></i></button>
                             <button class="delete-btn btn btn-danger" data-item-id="{{ $dT->id }}"><i class="bi bi-trash"></i></button>
                             @else
                             -
@@ -150,9 +150,7 @@ jQuery(document).ready(function($) {
 
     // Initialize selectpicker on page load
     initializeSelectpicker();
-});
 
-$(document).ready(function() {
     $('.updateBtn').click(function() {
         var requestId = $(this).data('request-id');
         $('#approveButton').data('request-id', requestId);
@@ -312,7 +310,7 @@ $(document).ready(function() {
         });
 
     });
-});
+
 
 
 // Delete Confirmation Modal & Button
@@ -438,6 +436,7 @@ $(document).ready(function() {
             }
         });
     });
+});
 
 
 

@@ -98,8 +98,8 @@
                             <!-- Content for Approved by -->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="130" viewBox="0 0 582 569">
                             @include('layouts.partials.etowa_hod_stamp_green')
-                            <text x="50%" y="50%" fill="green" font-size="74"  stroke="#00ff00" stroke-width="4" dominant-baseline="middle" text-anchor="middle">Test</text>
-                            <text x="50%" y="80%" fill="green" font-size="64"  stroke="#00ff00" stroke-width="4" dominant-baseline="middle" text-anchor="middle">Test</text>
+                            <text x="50%" y="50%" fill="green" font-size="74"  stroke="#00ff00" stroke-width="4" dominant-baseline="middle" text-anchor="middle">{{ $dataT->created_at->format('Y-m-d') }}</text>
+                            <text x="50%" y="80%" fill="green" font-size="64"  stroke="#00ff00" stroke-width="4" dominant-baseline="middle" text-anchor="middle">{{ App\Models\User::find($dataT->user_id)->name }}</text>
                             </svg>
                     </div>
                 </div>

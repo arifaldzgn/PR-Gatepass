@@ -72,31 +72,9 @@
 
     </main>
 
-
-
-
-
-
+@section('script')
 <script>
-    $('#submitRequest').click(function() {
-        var formData = new FormData($('#createPrForm')[0]);
 
-        $.ajax({
-            url: "{{ route('create_gatepass') }}",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                Swal.fire('Success', response.message, 'success').then(function(){
-                    location.reload();
-                });;
-            },
-            error: function(xhr, status, error) {
-                Swal.fire('Error', xhr.responseJSON.error, 'error');
-            }
-        });
-    });
 
     // $('#submitRequest').click(function() {
     //     var formData = $('#createPrForm').serialize();
@@ -127,6 +105,27 @@
     // });
 
     jQuery(document).ready(function($) {
+
+        $('#submitRequest').click(function() {
+            var formData = new FormData($('#createPrForm')[0]);
+
+            $.ajax({
+                url: "{{ route('create_gatepass') }}",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    Swal.fire('Success', response.message, 'success').then(function(){
+                        location.reload();
+                    });;
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire('Error', xhr.responseJSON.error, 'error');
+                }
+            });
+        });
+
         var arrayCount = 1;
         var itemCount = 2;
 
@@ -271,8 +270,6 @@
 
 
 </script>
-
-<!-- Bootstrap JS -->
-
+@endsection
 
 @endsection

@@ -256,6 +256,7 @@ class GatePassController extends Controller
         $updateTicket = gatePassTicket::find($request->ticket_id);
         if ($updateTicket) {
             $updateTicket->checked_user_id = auth()->user()->id;
+            $updateTicket->date_verify = now()->format('Y-m-d H:i:s');
             $updateTicket->status = 'Approved';
             $updateTicket->save();
         }

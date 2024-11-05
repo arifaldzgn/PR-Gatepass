@@ -56,9 +56,9 @@
                                 @if ($d->approved_user_id !== null && $d->checked_user_id !== null)
                                     <center><a class="btn btn-success" data-item-id="{{ $d->id }}" href="/print_gatepass/{{$d->ticket}}"><i class="bi bi-printer"></i></a></center>
                                 @elseif($d->approved_user_id !== null)
-                                    <a class="btn btn-primary" data-item-id="{{ $d->id }}" href="/print_gatepass/{{$d->ticket}}" target="_blank"><i class="bi bi-printer"></i></a>
+                                    <center><a class="btn btn-success" data-item-id="{{ $d->id }}" href="/print_gatepass/{{$d->ticket}}" target="_blank"><i class="bi bi-printer"></i></a></center>
                                     @if (auth()->user()->role === 'security')
-                                        <a class="btn btn-primary" data-item-id="{{ $d->id }}" href="/verif_gatepass/{{$d->ticket}}"><i class="bi bi-file-earmark-check"></i></a>
+                                        <center><a class="btn btn-primary" data-item-id="{{ $d->id }}" href="/verif_gatepass/{{$d->ticket}}"><i class="bi bi-file-earmark-check"></i></a></center>
                                     @endif
                                 @endif
                             @else

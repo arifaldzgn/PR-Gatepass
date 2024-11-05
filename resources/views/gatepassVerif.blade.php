@@ -126,6 +126,12 @@
                          @endforeach
                      </div>
                      <br>
+
+                     <div class="mb-3 mt-4">
+                        <label class="form-label">Additional Note:</label>
+                        <textarea class="form-control" value="123" placeholder="Add notes based on the related items above (Condition, shape, quantity, etc.)" readonly name="pr_request[{{$loop->iteration}}][note]">{{$dR->note}}</textarea>
+                     </div>
+
                      {{-- End Of Image Row 1 --}}
 
                      @if($dR->checked_image_url === null)

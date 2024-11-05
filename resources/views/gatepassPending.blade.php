@@ -61,6 +61,14 @@
                             <a class="btn btn-primary" href="edit_gatepass/{{$d->ticket}}"><i class="bi bi-pencil"></i></a>
                             <a class="btn btn-danger delete-btn" data-item-id="{{ $d->id }}"><i class="bi bi-trash3"></i></a>
                         </td>
+                        @elseif(auth()->user()->role === 'admin')
+                        <td>
+                            <a class="btn btn-primary" href="edit_gatepass/{{$d->ticket}}"><i class="bi bi-pencil"></i></a>
+                        </td>
+                        @else
+                        <td>
+                            -
+                        </td>
                         @endif
                     </tr>
                 @endforeach

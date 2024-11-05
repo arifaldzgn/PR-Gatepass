@@ -11,7 +11,7 @@
     <div class="flexbox">
         <div class="search">
           <h1>Search gatepass request</h1>
-          <h3>Click on search icon, then type office number, press <b>Enter.</b></h3>
+          <h3>Click on search icon, then type office number (ex: 20 10 001), press <b>Enter.</b></h3>
           <div>
             <input class="asa" type="text" id="searchInput" placeholder="Input Office Number . . ." required>
           </div>
@@ -30,7 +30,7 @@
 
     function performSearch() {
         var searchTerm = input.value.trim();
-        window.location.href = "/print_gatepass/" + encodeURIComponent(searchTerm);
+        window.location.href = "/printTicket/" + encodeURIComponent(searchTerm);
     }
 </script>
 </html>

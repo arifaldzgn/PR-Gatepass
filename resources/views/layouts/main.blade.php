@@ -110,64 +110,6 @@
 </div>
 
 
-<script>
-     $(document).ready(function() {
-        $('#password_confirmation').on('keyup', function() {
-            var password = $('#password').val();
-            var confirmPassword = $('#password_confirmation').val();
-
-            if (password !== confirmPassword) {
-                $('#password_confirmation').addClass('is-invalid');
-                $('#password_confirmation_feedback').text('Passwords do not match.');
-            } else {
-                $('#password_confirmation').removeClass('is-invalid');
-                $('#password_confirmation_feedback').text('');
-            }
-        });
-    });
-
-    $('#profileForm').submit(function(e) {
-        e.preventDefault();
-
-        $.ajax({
-            url: '{{ route("profile.update") }}',
-            method: 'POST',
-            data: $(this).serialize(),
-            success: function(response) {
-                // Check the response message
-                if (response.message.includes('password')) {
-                    swal.fire({
-                        title: 'Success',
-                        text: response.message,
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
-                } else {
-                    swal.fire({
-                        title: 'Success',
-                        text: response.message,
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    }).then((result) => {
-                        // Redirect or reload the page if necessary
-                        window.location.reload(); // Example: reload the page
-                    });
-                }
-            },
-            error: function(xhr, status, error) {
-                swal.fire({
-                    title: 'Error',
-                    text: 'There was an error updating the profile.',
-                    icon: 'error',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
-    });
-
-
-</script>
-
 @endif
 
 @yield('container')
@@ -179,7 +121,7 @@
 <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'></script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script> --}}
 
 <!-- Bootstrap Select -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
@@ -193,6 +135,64 @@
 <!-- Custom Script -->
 <script src="/script/dashboard.js"></script>
 
+<script>
+    $(document).ready(function($) {
+        $('#password_confirmation').on('keyup', function() {
+            var password = $('#password').val();
+            var confirmPassword = $('#password_confirmation').val();
+
+            if (password !== confirmPassword) {
+                $('#password_confirmation').addClass('is-invalid');
+                $('#password_confirmation_feedback').text('Passwords do not match.');
+            } else {
+                $('#password_confirmation').removeClass('is-invalid');
+                $('#password_confirmation_feedback').text('');
+            }
+        });
+
+        $('#profileForm').submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '{{ route("profile.update") }}',
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Check the response message
+                    if (response.message.includes('password')) {
+                        swal.fire({
+                            title: 'Success',
+                            text: response.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                    } else {
+                        swal.fire({
+                            title: 'Success',
+                            text: response.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            // Redirect or reload the page if necessary
+                            window.location.reload(); // Example: reload the page
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    swal.fire({
+                        title: 'Error',
+                        text: 'There was an error updating the profile.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 @yield('script')
+
+
 </html>
-</html>
+

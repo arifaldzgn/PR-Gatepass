@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->bigInteger('approved_user_id')->nullable();
             $table->date('date_approval')->nullable();
+            $table->date('date_checked')->nullable();
             $table->string('ticketCode')->unique();
             $table->string('status');
             $table->string('reason_reject')->nullable();
