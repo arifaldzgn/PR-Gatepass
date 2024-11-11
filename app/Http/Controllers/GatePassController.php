@@ -84,20 +84,14 @@ class GatePassController extends Controller
 
     public function gatepassPrinted($ticket)
     {
-        // Find the GatePassTicket with the given ticket number
         $dataT = GatePassTicket::where('ticket', $ticket)->first();
 
-        // If no ticket is found, $dataT will be null
         if (!$dataT) {
-            // You can handle this situation by throwing an exception or returning a response
-            // For example, throwing a 404 Not Found exception:
             abort(404, 'Ticket not found');
         }
 
-        // If ticket exists, proceed to fetch related data
         $dataR = $dataT->gatePassRequest;
 
-        // Pass the data to the view
         return view('gatepassPrint', [
             'dataT' => $dataT,
             'dataR' => $dataR

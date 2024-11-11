@@ -189,12 +189,12 @@
         <div class="notice">Item {{$loop->iteration}}: {{$dR->note}}</div>
         @endforeach
       </div>
-      <div class="mt-3" id="notices">
+      {{-- <div class="mt-3" id="notices">
         <div>SECURITY NOTE:</div>
         @foreach($dataR as $dR)
         <div class="notice">Item {{$loop->iteration}}: {{$dR->note}}</div>
         @endforeach
-      </div>
+      </div> --}}
 
   </body>
 </html>
